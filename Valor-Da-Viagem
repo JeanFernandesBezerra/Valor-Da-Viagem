@@ -1,51 +1,57 @@
-console.log("-".repeat(35));
+// ENTRADA DO NOME DO PASSAGEIRO
+console.log("-".repeat(14) + "APELIDO" + "-".repeat(14));
+const nomePassageiro = prompt("DIGITE O DO PASSAGEIRO: ");
+console.log();
+
+console.log("-".repeat(13) + "CATEGORIA" + "-".repeat(13));
 console.log("1 - Adulto");
 console.log("2 - Estudante");
 console.log("3 - Idoso");
 console.log("4 - Criança menor que 5 anos");
 console.log("-".repeat(35));
 
-// ENTRADA DE DADOS
-const nomePassageiro = prompt("Digite o nome do passageiro: ");
-const categoria = Number(prompt("Digite a categoria: "));
-const passagemQuantidade = Number(prompt("Quantidade de passagens: "));
+// ENTRADA DE CATEGORIA
+const categoria = Number(prompt("DIGITE A CATEGORIA: "));
+console.log();
 
-console.log("-".repeat(35));
+// VALIDAÇÃO DE CATEGORIA
+let categoriaValidacao = true;
+let desconto;
+switch (categoria) {
+    case 1:
+        desconto = 0;
+        break;
 
-// VALIDAÇÃO DE PASSAGEM
-if (passagemQuantidade >= 1) {
-    let desconto;
-    let categoriaValidacao = true;
+    case 2:
+    case 3:
+        desconto = 0.5;
+        break;
 
-    // VALIDAÇÃO DE CATEGORIA
-    switch (categoria) {
-        case 1:
-            desconto = 0;
-            break;
+    case 4:
+        desconto = 1;
+        break;
 
-        case 2:
-        case 3:
-            desconto = 0.5;
-            break;
+    default:
+        console.log("CATEGORIA INVÁLIDA!");
+        categoriaValidacao = false;
+}
 
-        case 4:
-            desconto = 1;
-            break;
+if (categoriaValidacao === true){
+    console.log("-".repeat(13) + "PASSAGENS" + "-".repeat(13));
+    const passagemQuantidade = Number(prompt("DIGITE O NÚMERO DE PASSAGENS: "));
+    console.log();
 
-        default:
-            console.log("CATEGORIA INVÁLIDA!");
-            categoriaValidacao = false;
-    }
-
-    if (categoriaValidacao === true) {
+    // VALIDAÇÃO DE PASSAGEM
+    if (passagemQuantidade >= 1) {
+        console.log("-".repeat(14) + "DESTINO" + "-".repeat(14));
         console.log("1 - Destino A R$45");
         console.log("2 - Destino B R$72");
         console.log("3 - Destino C R$110");
         console.log("4 - Destino D R$138");
         console.log("-".repeat(35));
 
-        const destino = Number(prompt("Digite o destino: "));
-        console.log("-".repeat(35));
+        const destino = Number(prompt("DIGITE O DESTINO: "));
+        console.log();
 
         let destinoValor;
         let destinoNome;
@@ -109,10 +115,8 @@ if (passagemQuantidade >= 1) {
                 total < 100
                     ? "PAGAMENTO À VISTA!"
                     : "PARCELÁVEL EM ATÉ 3X SEM JUROS!";
-
-            console.log("-".repeat(35));
-
             // COMPROVANTE
+            console.log("-".repeat(12) + "COMPROVANTE" + "-".repeat(12));
             console.log("Nome do passageiro: " + nomePassageiro);
             console.log("Destino: " + destinoNome);
             console.log("Quantidade de passagens: " + passagemQuantidade);
@@ -125,6 +129,7 @@ if (passagemQuantidade >= 1) {
             console.log("-".repeat(35));
         }
     }
-} else {
-    console.log("QUANTIDADE DE PASSAGENS INVÁLIDA!");
+    else{
+        console.log("QUANTIDADE DE PASSAGENS INVÁLIDA!");
+    }
 }
